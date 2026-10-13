@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mitu ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #250019, #050008 75%);
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+#stars, #petals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#stars { z-index: 0; }
+#petals { z-index: 5; }
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ffd6e8;
+  box-shadow: 0 0 9px #ff3c89;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .2; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1.5); }
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+  padding: 35px 10px 45px;
+}
+
+.heading {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: #ffc6df;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-family: cursive;
+  font-size: 34px;
+  color: #ff80b5;
+  text-shadow: 0 0 16px #ff1768;
+  margin: 0 0 5px;
+}
+
+.subtitle {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #d9a7c1;
+  margin-bottom: 12px;
+}
+
+#heart {
+  position: relative;
+  width: min(94vw, 350px);
+  height: 300px;
+  margin: 0 auto;
+  animation: heartbeat 2s infinite ease-in-out;
+  filter: drop-shadow(0 0 12px #ff1768);
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+.word {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  color: #ff79ae;
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 0 0 7px #ff1768, 0 0 14px #ff1768;
+  animation: glow 1.8s infinite alternate;
+}
+
+@keyframes glow {
+  from { opacity: .65; }
+  to { opacity: 1; }
+}
+
+.name {
+  font-family: cursive;
+  font-size: 38px;
+  font-style: italic;
+  color: #ff8dbb;
+  text-shadow: 0 0 12px #ff1768, 0 0 26px #ff1768;
+  margin-top: 12px;
+}
+
+.bigheart {
+  display: inline-block;
+  animation: heartbeat 1s infinite;
+}
+
+.caption {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: #ffe3ef;
+  margin-top: 8px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 27px auto 10px;
+  max-width: 370px;
+}
+
+button {
+  background: linear-gradient(135deg, #ff4d91, #d81761);
+  border: 1px solid #ff9dc5;
+  color: white;
+  padding: 12px 15px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: bold;
+  box-shadow: 0 0 12px #ff176844;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+.note {
+  color: #d8a0ba;
+  font-size: 11px;
+  margin-top: 20px;
+  letter-spacing: 2px;
+}
+
+/* Pop-up windows */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: #050008ee;
+  justify-content: center;
+  align-items: center;
+  padding: 22px;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.card {
+  width: 100%;
+  max-width: 360px;
+  padding: 26px 20px;
+  background: linear-gradient(145deg, #31001f, #10000e);
+  border: 1px solid #ff6ba5;
+  border-radius: 22px;
+  box-shadow: 0 0 35px #ff176855;
+  animation: appear .4s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: scale(.75); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.card h2 {
+  color: #ff91bc;
+  font-family: cursive;
+  font-size: 29px;
+}
+
+.card p {
+  color: #ffe0ed;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.close {
+  margin-top: 12px;
+  background: #4a1735;
+}
+
+#yesButton {
+  background: linear-gradient(135deg, #ff8dbb, #e51d69);
+  margin: 5px;
+}
+
+#noButton {
+  background: #42152f;
+  margin: 5px;
+}
+
+.rose {
+  position: absolute;
+  top: -40px;
+  animation: fall linear forwards;
+  opacity: .9;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: .2;
+  }
+}
+
+#proposalMessage {
+  color: #ffabd0;
+  font-size: 17px;
+  line-height: 1.8;
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+<div id="petals"></div>
+
+<main>
+  <div class="heading">A LITTLE PIECE OF MY HEART</div>
+  <h1>My Love ❤️</h1>
+  <div class="subtitle">MADE WITH LOVE, JUST FOR YOU</div>
+
+  <div id="heart"></div>
+
+  <div class="caption">THIS IS MY LOVE</div>
+
+  <div class="name">
+    for MITU <span class="bigheart">❤️</span>
+  </div>
+
+  <div class="buttons">
+    <button onclick="openModal('letter')">
+      💌 Love Letter
+    </button>
+
+  
+
+    <button onclick="togglePetals()" id="petalButton">
+      🌹 Rose Petals
+    </button>
+
+    <button onclick="openModal('proposal')">
+      💍 Special Surprise
+    </button>
+  </div>
+
+  <div class="note">YOU MAKE EVERY MOMENT SPECIAL ✨</div>
+</main>
+
+<!-- Secret Love Letter -->
+
+<div class="modal" id="letter">
+  <div class="card">
+    <h2>💌 Dear Mitu</h2>
+
+    <p>
+      তুমি আমার কাছে সত্যিই স্পেশাল। ❤️<br>
+      তোমার হাসি আমার দিনটাকে সুন্দর করে তোলে।<br>
+      তোমার সঙ্গে কাটানো ছোট ছোট মুহূর্তগুলোও
+      আমার কাছে অনেক মূল্যবান। 🌹<br><br>
+      দূরে থাকলেও, তোমার জন্য রইল
+      অনেক ভালোবাসা আর এক আকাশ শুভকামনা। 💖<br><br>
+      <b>Always keep smiling, Mitu! 🌸</b>
+    </p>
+
+    <button class="close" onclick="closeModal('letter')">
+      Close ❤️
+    </button>
+  </div>
+</div>
+
+<!-- Proposal Animation -->
+
+<div class="modal" id="proposal">
+  <div class="card">
+    <h2>💖 A Special Question</h2>
+
+    <p id="proposalMessage">
+      Mitu, তুমি কি আমার জীবনের
+      সুন্দর মুহূর্তগুলোর সঙ্গী হবে? 🌹
+    </p>
+
+    <div>
+      <button id="yesButton" onclick="sayYes()">
+        Yes! 💖
+      </button>
+
+      <button id="noButton" onclick="closeModal('proposal')">
+        Maybe Later 😊
+      </button>
+    </div>
+
+    <button class="close" onclick="closeModal('proposal')">
+      Close
+    </button>
+  </div>
+</div>
+
+<script>
+const heart = document.getElementById("heart");
+
+const phrases = [
+  "I love you",
+  "Forever ❤️",
+  "My love",
+  "Sweetheart",
+  "Always",
+  "Love you",
+  "You ♥"
+];
+
+/* Create a balanced heart shape */
+
+const rows = [
+  { y: 17, parts: [[25, 16], [75, 16]] },
+  { y: 25, parts: [[20, 20], [50, 17], [80, 20]] },
+  { y: 33, parts: [[16, 18], [38, 18], [62, 18], [84, 18]] },
+  { y: 41, parts: [[12, 18], [32, 18], [52, 18], [72, 18], [90, 15]] },
+  { y: 49, parts: [[10, 18], [30, 18], [50, 18], [70, 18], [90, 15]] },
+  { y: 57, parts: [[16, 18], [36, 18], [56, 18], [76, 18]] },
+  { y: 65, parts: [[22, 18], [42, 18], [62, 18], [78, 15]] },
+  { y: 73, parts: [[30, 18], [50, 18], [70, 18]] },
+  { y: 81, parts: [[38, 18], [58, 18]] },
+  { y: 89, parts: [[48, 18]] }
+];
+
+rows.forEach((row, rowIndex) => {
+  row.parts.forEach(([x, width]) => {
+    const word = document.createElement("span");
+    word.className = "word";
+    word.textContent =
+      phrases[Math.floor(Math.random() * phrases.length)];
+
+    word.style.left = x + "%";
+    word.style.top = row.y + "%";
+    word.style.animationDelay = Math.random() * 2 + "s";
+
+    heart.appendChild(word);
+  });
+});
+
+/* Twinkling stars */
+
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 65; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.animationDelay = Math.random() * 3 + "s";
+  stars.appendChild(star);
+}
+
+/* Floating rose petals */
+
+let petalsOn = false;
+let petalTimer = null;
+
+function createPetal() {
+  if (!petalsOn) return;
+
+  const rose = document.createElement("div");
+  rose.className = "rose";
+
+  const choices = ["🌹", "🌸", "🌺", "💗"];
+  rose.textContent =
+    choices[Math.floor(Math.random() * choices.length)];
+
+  rose.style.left = Math.random() * 100 + "vw";
+  rose.style.fontSize = (15 + Math.random() * 17) + "px";
+  rose.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+  document.getElementById("petals").appendChild(rose);
+
+  setTimeout(() => rose.remove(), 11000);
+}
+
+function togglePetals() {
+  petalsOn = !petalsOn;
+
+  document.getElementById("petalButton").textContent =
+    petalsOn ? "🌹 Stop Petals" : "🌹 Rose Petals";
+
+  if (petalsOn) {
+    createPetal();
+    petalTimer = setInterval(createPetal, 650);
+  } else {
+    clearInterval(petalTimer);
+    document.getElementById("petals").innerHTML = "";
+  }
+}
+
+/* Modal controls */
+
+function openModal(id) {
+  document.getElementById(id).classList.add("show");
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove("show");
+}
+
+function sayYes() {
+  document.getElementById("proposalMessage").innerHTML =
+    "Yay! 💖✨<br>" +
+    "তোমার এই সুন্দর উত্তরটি এই মুহূর্তটাকে " +
+    "আরও স্পেশাল করে তুলল! 🌹";
+
+  document.getElementById("yesButton").style.display = "none";
+  document.getElementById("noButton").style.display = "none";
+
+  for (let i = 0; i < 12; i++) {
+    setTimeout(createPetal, i * 180);
+  }
+}
+
+/* A simple synthesized melody.
+   Audio starts only when the user presses the button. */
+
+let audioContext = null;
+let musicTimer = null;
+let musicOn = false;
+let noteIndex = 0;
+
+const melody = [
+  392, 440, 494, 440,
+  392, 330, 349, 392,
+  440, 392, 349, 330
+];
+
+function playNote() {
+  if (!audioContext || !musicOn) return;
+
+  const osc = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  osc.type = "sine";
+  osc.frequency.value = melody[noteIndex % melody.length];
+
+  gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
+  gain.gain.exponentialRampToValueAtTime(
+    0.07, audioContext.currentTime + 0.05
+  );
+  gain.gain.exponentialRampToValueAtTime(
+    0.0001, audioContext.currentTime + 0.32
+  );
+
+  osc.connect(gain);
+  gain.connect(audioContext.destination);
+
+  osc.start();
+  osc.stop(audioContext.currentTime + 0.34);
+
+  noteIndex++;
+}
+
+async function toggleMusic() {
+  const button = document.getElementById("musicButton");
+
+  if (musicOn) {
+    musicOn = false;
+    clearInterval(musicTimer);
+    button.textContent = "🎵 Play Music";
+    return;
+  }
+
+  const AudioClass = window.AudioContext ||
+                     window.webkitAudioContext;
+
+  if (!AudioClass) {
+    button.textContent = "Audio not supported";
+    return;
+  }
+
+  if (!audioContext) {
+    audioContext = new AudioClass();
+  }
+
+  if (audioContext.state === "suspended") {
+    await audioContext.resume();
+  }
+
+  musicOn = true;
+  button.textContent = "⏸ Stop Music";
+
+  playNote();
+  musicTimer = setInterval(playNote, 380);
+}
+</script>
+
+</body>
+  </html>
